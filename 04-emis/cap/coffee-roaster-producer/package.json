@@ -17,6 +17,6 @@
     "eslint": "^9"
   },
   "scripts": {
-    "start": "cds-serve"
+    "start": "cds watch --port 4004"
   }
 }

@@ -4,8 +4,7 @@ const AMQPClient = require('../../../../assets/XBMSGAMQPClient');     // --> use
 cds.on('served', async (services) => {
     const client = new AMQPClient(cds.env.requires.AMQP.brokerName, cds.env.requires.AMQP.credentials);
     client.connect().then(() => {
-        client.registerPublisher(services['ebite.ProducerService'], 'topic://event-driven-integrations/e-bite/cap/ce/coffee/roasted/v1');
-        // client.registerPublisher(services['ebite.ProducerService'], 'queue:queue-CAP');
+        client.registerPublisher(services['ebite.ProducerService'], ['topic://event-driven-integrations/e-bite/cap/ce/coffee/roasted/v1', 'topic://try-me']);
     });
 });
 module.exports = cds.server;
