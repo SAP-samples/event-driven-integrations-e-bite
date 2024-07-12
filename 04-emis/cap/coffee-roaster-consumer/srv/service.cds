@@ -1,0 +1,5 @@
+namespace ebite;
+
+service ConsumerService {
+    
+};

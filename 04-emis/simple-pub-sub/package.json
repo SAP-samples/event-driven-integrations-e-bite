@@ -1,0 +1,6 @@
+{
+    "dependencies": {
+        "@sap/xb-msg-amqp-v100": "^0.9.58",
+        "cloudevents": "^8.0.1"
+    }
+}
