@@ -53,25 +53,17 @@ module.exports = async (srv) => {
      * @param {import("@sap/cds").Request} req - The CDS request object.
      */
     srv.on("CoffeeBatchRoastedEvent", async (req) => {
-        const type = "event-driven-integrations.e-bite.coffee.roasted.v1";
-        const uom = randomEnumValue("ebite.UOM");
+        /* 
+        ************************************************
+        * Create CoffeeBatchRoaster CloudEvents message
+        ************************************************
+        */
 
-        const data = {
-            country: randomEnumValue("ebite.ProducingCountry"),
-            process: randomEnumValue("ebite.ProcessingMethod"),
-            species: randomEnumValue("ebite.Species"),
-            variety: randomEnumValue("ebite.Variety"),
-            quantity: getRandomNumber(uom),
-            uom: uom,
-        };
+        // Insert code here
 
-        // Create a new CloudEvent
-        const ce = new CloudEvent({ type, source: ceSource, data });
-
-        console.log(ce);
-
-        await srv.emit(coffeeRoastedEventTopic, ce);
-        req.notify(`Event sent > ${coffeeRoastedEventTopic}`);
+        /*
+        * End of Create CoffeeBatchRoaster CloudEvents message section
+        */
     });
 
     /**

@@ -3,13 +3,23 @@
 const options = require("./options");
 const { CloudEvent } = require("cloudevents");
 
-const { Client } = require("@sap/xb-msg-amqp-v100");
+/* 
+*************************
+* Create Producer client
+*************************
+*/
 
-const client = new Client(options);
-const stream = client
-    .sender("out")
-    .attach("topic:event-driven-integrations/e-bite/nodejs/ce/coffee/roasted/v1", "", 100000);
+// Insert code here
 
+/*
+* End of Create Producer Client section
+*/
+
+/**
+ * Callback function called when an AMQP message is successfully sent.
+ * @param {Object} message - The sent message object.
+ * @returns {void}
+ */
 function onSendDone(message) {
     console.log("AMQP message sent");
     console.log(message);
@@ -17,47 +27,29 @@ function onSendDone(message) {
     client.disconnect();
 }
 
+/**
+ * Callback function called when an AMQP message fails to send.
+ * @param {Error} error - The error object representing the failure.
+ * @param {Object} message - The message object that failed to send.
+ * @returns {void}
+ */
 function onSendFailed(error, message) {
     console.log("message failed", error.message);
 }
 
-function send() {
-    const source = "event-driven-integrations/e-bite/nodejs"
-    const type = "event-driven-integrations.e-bite.coffee.roasted.v1"
-    const data = {
-        country: "Honduras",
-        process: "Washed",
-        species: "Arabica",
-        variety: ["Caturra", "Catuai", "Lempira", "IHCAFE 90 und Parainema"],
-        quantity: 350,
-        uom: "g"
-    };
+/* 
+**********************
+* Publish Event
+***********************
+*/
 
-    const ce = new CloudEvent({ type, source, data });
+// Insert code here
 
-    console.log("CloudEvents message to be sent: \n" + JSON.stringify(ce, null, 4));
+/*
+* End of Publish Event section
+*/
 
-    var payload = {};
-
-    // Structured format
-    payload = {
-        chunks: [
-            Buffer.from(
-                JSON.stringify(ce)
-            ),
-        ],
-        type: "application/cloudevents+json",
-    };
-    
-    const message = {
-        payload: payload,
-        done: () => onSendDone(message),
-        failed: (error) => onSendFailed(error, message),
-    };
-
-    stream.write(message);
-}
-
+// Attach event listeners to the stream
 stream
     .on("ready", () => {
         send();

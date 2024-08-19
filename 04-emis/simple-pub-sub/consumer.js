@@ -1,20 +1,39 @@
-const amqp = require("@sap/xb-msg-amqp-v100");
+"use strict";
 
 const options = require("./options");
 
-const client = new amqp.Client(options);
+const { Client } = require("@sap/xb-msg-amqp-v100");
 
-stream = client.receiver("Subscriber").attach("queue:queue-CE");
+/* 
+*************************
+* Create Consumer client
+*************************
+*/
 
+// Insert code here
+
+/*
+* End of Create Consumer Client section
+*/
+
+// Attach event listeners to the stream
 stream
   .on("ready", () => {
     console.log("ready");
   })
   .on("data", (message) => {
-    console.log("data", message);
-    var payload = JSON.parse(message.payload.toString("utf8"));
-    console.log(`Received the following message: ${JSON.stringify(payload)}`);
-    message.done();
+
+    /* 
+    **************************
+    * Handle event received
+    **************************
+    */
+
+    // Insert code here
+    
+    /*
+    * End of Handle event received section
+    */
   })
   .on("finish", () => {
     console.log("finish");
