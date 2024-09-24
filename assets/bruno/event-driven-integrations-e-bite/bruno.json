@@ -1,0 +1,9 @@
+{
+  "version": "1",
+  "name": "event-driven-integrations-e-bite",
+  "type": "collection",
+  "ignore": [
+    "node_modules",
+    ".git"
+  ]
+}

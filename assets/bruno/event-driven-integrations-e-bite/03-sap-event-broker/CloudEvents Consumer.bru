@@ -1,0 +1,11 @@
+meta {
+  name: CloudEvents Consumer
+  type: http
+  seq: 1
+}
+
+get {
+  url: https://{{app-route}}.cfapps.{{region}}.hana.ondemand.com/odata/v4/cloud-event/Events
+  body: none
+  auth: none
+}
