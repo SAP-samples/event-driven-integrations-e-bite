@@ -1,0 +1,66 @@
+_schema-version: 3.3.0
+ID: cap.ce-consumer
+version: 1.0.0
+description: "A CAP application consuming events from SAP Event Broker."
+
+parameters:
+  deploy_mode: html5-repo
+  enable-parallel-deployments: true
+
+build-parameters:
+  before-all:
+    - builder: custom
+      commands:
+        - npm ci
+        - npx cds build --production
+        # deploy the sqlite db
+        - npx cds deploy
+        - cp db.sqlite gen/srv
+
+modules:
+  - name: ce-consumer-srv
+    type: nodejs
+    path: gen/srv
+    parameters:
+      buildpack: nodejs_buildpack
+      readiness-health-check-http-endpoint: /health
+      readiness-health-check-type: http
+    build-parameters:
+      builder: npm
+    provides:
+      - name: ce-consumer-srv-api
+        properties:
+          url: ${default-url} #> needed in webhookUrl and home-url below
+    requires:
+      - name: ce-consumer-logs
+      - name: ce-consumer-destination
+      - name: ce-consumer-event-broker
+        parameters:
+          config:
+            authentication-type: X509_IAS
+      - name: ce-consumer-ias
+        parameters:
+          config:
+            credential-type: X509_GENERATED
+            app-identifier: cap.ce-consumer #> any value, e.g., reuse MTA ID
+
+resources:
+  - name: ce-consumer-logs
+    type: org.cloudfoundry.managed-service
+    parameters:
+      service: application-logs
+      service-plan: lite
+  - name: ce-consumer-destination
+    type: org.cloudfoundry.managed-service
+    parameters:
+      service: destination
+      service-plan: lite
+  ########################################
+  # Event Broker and IAS resources section
+  ########################################
+  #
+  # Insert resource definition here
+  #
+  ###############################################
+  # End of Event Broker and IAS resources section
+  ###############################################
