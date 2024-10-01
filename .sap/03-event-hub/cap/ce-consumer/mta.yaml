@@ -1,7 +1,7 @@
 _schema-version: 3.3.0
 ID: cap.ce-consumer
 version: 1.0.0
-description: "A CAP application consuming events from SAP Event Broker."
+description: "A CAP application consuming events from SAP Cloud Application Event Hub."
 
 parameters:
   deploy_mode: html5-repo
@@ -56,7 +56,7 @@ resources:
       service: destination
       service-plan: lite
   ########################################
-  # Event Broker and IAS resources section
+  # Event Hub and IAS resources section
   ########################################
   - name: ce-consumer-event-broker
     type: org.cloudfoundry.managed-service
@@ -64,7 +64,7 @@ resources:
       service: event-broker
       service-plan: event-connectivity
       config:
-        # unique identifier for this event broker instance
+        # unique identifier for this SAP Cloud Application Event Hub instance
         # should start with own namespace (i.e., "foo.bar") and may not be longer than 15 characters
         systemNamespace: cap.ceconsumer
         webhookUrl: ~{ce-consumer-srv-api/url}/-/cds/event-broker/webhook
@@ -87,5 +87,5 @@ resources:
         display-name: cap.ce-consumer #> any value, e.g., reuse MTA ID
         home-url: ~{ce-consumer-srv-api/url}
   ###############################################
-  # End of Event Broker and IAS resources section
+  # End of Event Hub and IAS resources section
   ###############################################

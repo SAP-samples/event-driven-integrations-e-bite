@@ -1,7 +1,7 @@
 _schema-version: 3.3.0
 ID: cap.ce-consumer
 version: 1.0.0
-description: "A CAP application consuming events from SAP Event Broker."
+description: "A CAP application consuming events from SAP Cloud Application Event Hub."
 
 parameters:
   deploy_mode: html5-repo
@@ -56,11 +56,11 @@ resources:
       service: destination
       service-plan: lite
   ########################################
-  # Event Broker and IAS resources section
+  # Event Hub and IAS resources section
   ########################################
   #
   # Insert resource definition here
   #
   ###############################################
-  # End of Event Broker and IAS resources section
+  # End of Event Hub and IAS resources section
   ###############################################

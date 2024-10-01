@@ -1,8 +1,8 @@
 # Cloud Event Consumer
 
-This is a sample CAP application configure to easily connect to SAP Event Broker for SAP cloud applications.
+This is a sample CAP application configure to easily connect to SAP Cloud Application Event Hub for SAP cloud applications.
 
-Unfortunately, it is not possible to connect SAP Event Broker to a project running locally. The project will need to be deployed to SAP BTP in order to connect to SAP Event Broker.
+Unfortunately, it is not possible to connect SAP Cloud Application Event Hub to a project running locally. The project will need to be deployed to SAP BTP in order to connect to SAP Cloud Application Event Hub.
 
 ## Next Steps
 

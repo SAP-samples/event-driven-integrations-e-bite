@@ -1,7 +1,7 @@
 {
   "name": "ce-consumer",
   "version": "1.0.0",
-  "description": "CAP application consuming events from SAP Event Broker",
+  "description": "CAP application consuming events from SAP Cloud Application Event Hub",
   "repository": "<Add your repository here>",
   "license": "UNLICENSED",
   "dependencies": {
