@@ -1,3 +1,8 @@
+/**
+ * The AMQPClient class below is largely based on the cap-eventing sample created by Willem Pardaens - https://github.com/willemi069808. 
+ * The original code can be found here: https://github.com/willemi069808/cap-eventing/blob/main/advanced%20event%20mesh/AEMClient_XBMSG.js
+ */
+
 const assert = require("assert");
 const AMQP = require("@sap/xb-msg-amqp-v100");
 
