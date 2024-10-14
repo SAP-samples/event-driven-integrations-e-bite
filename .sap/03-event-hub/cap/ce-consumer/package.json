@@ -58,7 +58,7 @@
       },
       "messaging": {
         "kind": "event-broker",
-        "webhookPath": "/-/cds/event-broker/webhook"
+        "webhookPath": "/-/cds/event-hub/webhook"
       },
       "my-ias": {
         "vcap": {

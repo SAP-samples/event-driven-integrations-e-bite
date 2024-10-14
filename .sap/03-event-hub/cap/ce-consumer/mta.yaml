@@ -34,7 +34,7 @@ modules:
     requires:
       - name: ce-consumer-logs
       - name: ce-consumer-destination
-      - name: ce-consumer-event-broker
+      - name: ce-consumer-event-hub
         parameters:
           config:
             authentication-type: X509_IAS
@@ -58,7 +58,7 @@ resources:
   ########################################
   # Event Hub and IAS resources section
   ########################################
-  - name: ce-consumer-event-broker
+  - name: ce-consumer-event-hub
     type: org.cloudfoundry.managed-service
     parameters:
       service: event-broker
@@ -67,7 +67,7 @@ resources:
         # unique identifier for this SAP Cloud Application Event Hub instance
         # should start with own namespace (i.e., "foo.bar") and may not be longer than 15 characters
         systemNamespace: cap.ceconsumer
-        webhookUrl: ~{ce-consumer-srv-api/url}/-/cds/event-broker/webhook
+        webhookUrl: ~{ce-consumer-srv-api/url}/-/cds/event-hub/webhook
     requires:
       - name: ce-consumer-srv-api
   - name: ce-consumer-ias
@@ -75,15 +75,15 @@ resources:
     requires:
       - name: ce-consumer-srv-api
     processed-after:
-      # for consumed-services (cf. below), ce-consumer-event-broker must already exist
-      # -> ensure ce-consumer-ias is created after ce-consumer-event-broker
-      - ce-consumer-event-broker
+      # for consumed-services (cf. below), ce-consumer-event-hub must already exist
+      # -> ensure ce-consumer-ias is created after ce-consumer-event-hub
+      - ce-consumer-event-hub
     parameters:
       service: identity
       service-plan: application
       config:
         consumed-services:
-          - service-instance-name: ce-consumer-event-broker
+          - service-instance-name: ce-consumer-event-hub
         display-name: cap.ce-consumer #> any value, e.g., reuse MTA ID
         home-url: ~{ce-consumer-srv-api/url}
   ###############################################

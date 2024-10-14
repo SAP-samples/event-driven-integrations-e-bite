@@ -34,7 +34,7 @@ modules:
     requires:
       - name: ce-consumer-logs
       - name: ce-consumer-destination
-      - name: ce-consumer-event-broker
+      - name: ce-consumer-event-hub
         parameters:
           config:
             authentication-type: X509_IAS
