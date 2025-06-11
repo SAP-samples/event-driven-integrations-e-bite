@@ -24,7 +24,7 @@ module.exports = class AMQPClient {
   }
 
   /**
-   * Connects the client to the SAP Cloud Application Event Hub. Connection details should be specified in cds.requires.AMQP.credentials
+   * Connects the client to the broker. Connection details should be specified in cds.requires.AMQP.credentials
    */
   connect = () => {
     assert(this.broker == null, "Broker is already connected.");
