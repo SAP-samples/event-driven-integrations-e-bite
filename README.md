@@ -1,3 +1,5 @@
+[![REUSE status](https://api.reuse.software/badge/github.com/SAP-samples/event-driven-integrations-e-bite)](https://api.reuse.software/info/github.com/SAP-samples/event-driven-integrations-e-bite)
+
 # Developing Event-Driven Integrations with SAP BTP E-Bite
 <!-- Please include descriptive title -->
 
